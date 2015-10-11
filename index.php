@@ -52,15 +52,10 @@ try {
     $app->notFound(function () use ($app) {
         return Rs::p(0, 'Not Found', [], 404);
     });
-    
-    //Error
-    $app->error(function ($exception) {
-        return Rs::p(0, 'There was an error processing your request', [], 400);
-    });
-    
+
     $app->handle();
     
 } catch (\Exception $e) {
     
-    echo json_encode(array('status' => 'error', 'msg' => $e->getMessage()));
+    return Rs::p(0, 'There was an error processing your request', $e->getMessage(), 400);
 }
