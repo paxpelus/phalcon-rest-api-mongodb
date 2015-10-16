@@ -22,6 +22,8 @@ try {
         )
     )->register();
     
+    // Use composer autoloader to load vendor classes
+    require_once __DIR__ . '/vendor/autoload.php';
     
     //Create the app
     $app = new Micro();
